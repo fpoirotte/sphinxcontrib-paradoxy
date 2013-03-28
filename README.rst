@@ -17,11 +17,16 @@ fetched once per day.
 
 Now you can use e.g. :exmpl:`foo` in your documents.  This will create a
 link to a page hosted at ``http://example.com/`` and containing the
-documentation about the symbol named ``foo``.  The link caption will be
-the full URL, unless an explicit caption is given, e.g. :exmpl:`Foo <foo>`.
+documentation about the symbol named ``foo``.
+The link caption will be the symbol's name, unless an explicit caption
+is given, e.g. :exmpl:`Foo <foo>`.
 
 The full path to the symbol is retrieved from the Doxygen tagfile located
 at ``/path/to/tagfile``, which can be either a local file or an URL
 to some online file.
+
+If ``add_function_parentheses`` is set to ``True`` in your configuration
+file and if no explicit caption was given, the symbol will be suffixed
+with a set of parentheses whenever this is appropriate.
 
 This extension is heavily based on the extlinks and intersphinx extensions.
