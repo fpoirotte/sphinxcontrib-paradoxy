@@ -39,6 +39,8 @@ import libxml2
 from docutils import nodes, utils
 from sphinx.util.nodes import split_explicit_title
 
+__all__ = ['setup']
+
 handlers = [urllib2.ProxyHandler(), urllib2.HTTPRedirectHandler(),
             urllib2.HTTPHandler()]
 try:

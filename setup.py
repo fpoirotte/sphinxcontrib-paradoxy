@@ -10,13 +10,10 @@ import os
 import sys
 
 long_desc = '''
-Doxylinks is an extension to Sphinx to make it very easy to link 
-to some object in the documentation of a project documented with
+Doxylinks is an extension for Sphinx that makes it very easy to link 
+to some entry in the documentation of a project documented with
 `Doxygen <http://www.doxygen.org>`_.
 '''
-
-requires = ['Sphinx>=1.0.7']
-
 
 setup(
     name='doxylinks',
@@ -46,6 +43,8 @@ setup(
     platforms='any',
     packages=find_packages(),
     include_package_data=True,
-    install_requires=requires,
+    install_requires=[
+        'Sphinx>=1.0.7'
+    ],
     use_2to3=True,
 )
