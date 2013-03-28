@@ -10,20 +10,20 @@ import os
 import sys
 
 long_desc = '''
-Doxylinks is an extension for Sphinx that makes it very easy to link 
-to some entry in the documentation of a project documented with
+sphinxcontrib.doxylinks is an extension for Sphinx that makes it
+very easy to add links to objects of a project documented with
 `Doxygen <http://www.doxygen.org>`_.
 '''
 
 setup(
-    name='doxylinks',
+    name='sphinxcontrib-doxylinks',
     version='0.1.0',
-    url='https://github.com/fpoirotte/doxylinks',
-    download_url='https://github.com/fpoirotte/doxylinks',
+    url='https://github.com/fpoirotte/sphinxcontrib-doxylinks',
+    download_url='https://github.com/fpoirotte/sphinxcontrib-doxylinks',
     license='BSD',
     author='Francois Poirotte',
     author_email='clicky@erebot.net',
-    description='Sphinx links to Doxygen objects',
+    description='Easy linking to Doxygen objects from Sphinx',
     long_description=long_desc,
     zip_safe=False,
     classifiers=[

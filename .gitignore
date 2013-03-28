@@ -1,5 +1,6 @@
 /dist/
 /build/
+/debian/tmp/
 *.egg-info/
 *.pyc
 *.pyo
