@@ -84,9 +84,12 @@ License and credits
 -------------------
 
 This extension is licensed under the 2-clause BSD license.
-See the `LICENSE`_ file for more information.
+See the `LICENSE`__ file for more information.
 
 © 2013, François Poirotte <clicky@erebot.net>.
 
 This extension is heavily based on the extlinks and intersphinx extensions
 developped by the Sphinx community.
+
+.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/LICENSE
+
