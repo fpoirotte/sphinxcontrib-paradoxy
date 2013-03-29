@@ -1,8 +1,11 @@
 sphinxcontrib.doxylinks
 =======================
 
-Sphinx extension to save typing when linking to some information contained in
-a Doxygen documentation.
+`Sphinx`__ extension to save typing when linking to some information
+contained in a `Doxygen`__ documentation.
+
+.. __: http://sphinx-doc.org/
+.. __: http://www.doxygen.org/
 
 
 Installation
@@ -67,9 +70,11 @@ The full path to the symbol is retrieved from the Doxygen tagfile located
 at ``/path/to/tagfile``, which can be either a local file or an URL
 to some online file.
 
-If ``add_function_parentheses`` is set to ``True`` in your configuration
-file and if no explicit caption was given, the symbol will be suffixed
+If `add_function_parentheses`__ is set to ``True`` in your ``conf.py``
+and if no explicit caption was given, the symbol will be suffixed
 with a set of parentheses whenever this is appropriate.
+
+.. __: http://sphinx-doc.org/config.html#confval-add_function_parentheses
 
 The following objects can currently be referenced:
 
