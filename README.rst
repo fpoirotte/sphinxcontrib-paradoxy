@@ -51,10 +51,11 @@ The first one is called ``doxylinks`` and is created like this::
     doxylinks = {'exmpl': ('http://example.com/', '/path/to/tagfile'), ...}
 
 The second one is called ``doxylinks_cache_limit`` and indicates
-the number of days for which a remote tagfile will be kept in cache
-before being considered invalid (and fetched again).
+the number of days a remote tagfile will be kept in cache before
+being considered invalid (which will cause it to be fetched again
+the next time ``sphinx-build`` is run).
 The default value is 1, meaning that remote tagfiles will only be
-fetched once per day.
+fetched once per day. Set the value to 0 to disable caching entirely.
 
 Now you can use e.g. :exmpl:`foo` in your documents.  This will create a
 link to the page at ``http://example.com/`` containing the documentation
