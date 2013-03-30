@@ -11,14 +11,53 @@ contained in a `Doxygen`__ documentation.
 Installation
 ------------
 
-Download the latest version of the code from GitHub:
-https://github.com/fpoirotte/sphinxcontrib-doxylinks/archive/master.tar.gz
+Installing this extension is done in just a few steps:
 
-Extract the contents of the archive and go into the newly created directory.
+-   Download the latest version of the code from GitHub:
+    https://github.com/fpoirotte/sphinxcontrib-doxylinks/archive/master.tar.gz
 
-Then, install the extension from the machine's root account::
+-   Extract the contents of the archive and go into the newly created directory.
 
-    root@localhost:~# python setup.py install
+-   Then, install the extension from the machine's root account::
+
+        root@localhost:~# python setup.py install
+
+Please note that it is also possible to build a Debian package
+for the extension (see below), which makes it easier to remove
+the extension afterwards.
+
+
+Debian package
+--------------
+
+If like me you prefer installing softwares from packages instead of sources
+to ease maintenance, here's a quick guide on how to build a package for
+this extension on Debian testing:
+
+-   Make sure the following packages are installed beforehand:
+
+    -   debhelper
+    -   python-all
+    -   python-setuptools
+
+-   Download the latest version of the code from GitHub:
+    https://github.com/fpoirotte/sphinxcontrib-doxylinks/archive/master.tar.gz
+
+-   Rename the tarball into: ``sphinxcontrib-doxylinks_<version>.orig.tar.gz``,
+    where ``<version>`` matches the version string defined in `setup.py`__.
+
+-   Extract the tarball and go to the newly created directory.
+
+-   Build the package by running ``dpkg-buildpackage``.
+
+-   Install the newly created package with
+    ``sudo dpkg -i ../python-sphinxcontrib.doxylinks_*_all.deb``
+
+Other .deb-based distributions and older Debian releases may require some
+tweaking in the `packaging directory`__ for a package to be built correctly.
+
+.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/setup.py
+.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/debian/
 
 
 Prerequisites
