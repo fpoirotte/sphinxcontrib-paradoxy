@@ -46,18 +46,19 @@ from sphinx.util.nodes import split_explicit_title
 
 __all__ = ['setup']
 
-handlers = [urllib2.ProxyHandler(), urllib2.HTTPRedirectHandler(),
-            urllib2.HTTPHandler()]
-try:
-    handlers.append(urllib2.HTTPSHandler)
-except AttributeError:
-    pass
 
-urllib2.install_opener(urllib2.build_opener(*handlers))
-
+def configure_urllib2():
+    handlers = [urllib2.ProxyHandler(), urllib2.HTTPRedirectHandler(),
+                urllib2.HTTPHandler()]
+    try:
+        handlers.append(urllib2.HTTPSHandler)
+    except AttributeError:
+        pass
+    urllib2.install_opener(urllib2.build_opener(*handlers))
 
 def load_mappings(app):
     """Load all tagfiles into the environment."""
+    configure_urllib2()
     now = int(time.time())
     cache_time = now - getattr(app.config, 'doxylinks_cache_limit', 1) * 86400
     env = app.builder.env
@@ -75,7 +76,8 @@ def load_mappings(app):
                 cache[tagfile] = (data, now)
             else:
                 cache.pop(tagfile, None)
-
+        else:
+            app.info('loading tagfile %s from cache...' % tagfile)
 
 def fetch_tagfile(app, tagfile):
     """Fetch and store a Doxygen tagfile in memory."""
@@ -84,14 +86,16 @@ def fetch_tagfile(app, tagfile):
             f = urllib2.urlopen(tagfile)
         else:
             f = open(os.path.join(app.srcdir, tagfile), 'rb')
+        try:
+            return f.read()
+        except Exception:
+            raise
+        finally:
+        f.close()
     except Exception, err:
         app.warn('Doxygen tagfile %r not fetchable due to '
                  '%s: %s' % (tagfile, err.__class__, err))
         return
-    data = f.read()
-    f.close()
-    return data
-
 
 def lookup_url(app, tagfile, symbol):
     env = app.builder.env
@@ -105,30 +109,33 @@ def lookup_url(app, tagfile, symbol):
         "/name[text()='%(class)s']"
         "/.."
     ) % {'class': cls}
-    if member:
-        query += (
-            "/member[@kind='function' or @kind='variable']"
-            "/name[text()='%(member)s']"
-            "/.."
-        ) % {'class': cls, 'member': member}
-        res = ctxt.xpathEval(query + "/anchorfile/text()")
-        filename = str(res[0].content)
-        res = ctxt.xpathEval(query + "/anchor/text()")
-        anchor = str(res[0].content)
-        res = ctxt.xpathEval(query + "/@kind")
-        kind = str(res[0].content)
-    else:
-        res = ctxt.xpathEval(query + "/filename/text()")
-        filename = str(res[0].content)
-        anchor = None
-        res = ctxt.xpathEval(query + "/@kind")
-        kind = str(res[0].content)
-    doc.freeDoc()
-    ctxt.xpathFreeContext()
+    try:
+        if member:
+            query += (
+                "/member[@kind='function' or @kind='variable']"
+                "/name[text()='%(member)s']"
+                "/.."
+            ) % {'class': cls, 'member': member}
+            res = ctxt.xpathEval(query + "/anchorfile/text()")
+            filename = str(res[0].content)
+            res = ctxt.xpathEval(query + "/anchor/text()")
+            anchor = str(res[0].content)
+            res = ctxt.xpathEval(query + "/@kind")
+            kind = str(res[0].content)
+        else:
+            res = ctxt.xpathEval(query + "/filename/text()")
+            filename = str(res[0].content)
+            anchor = None
+            res = ctxt.xpathEval(query + "/@kind")
+            kind = str(res[0].content)
+    except IndexError:
+        raise KeyError('No documentation found for "%s"' % symbol)
+    finally:
+        doc.freeDoc()
+        ctxt.xpathFreeContext()
     if not filename.endswith('.html'):
         filename += '.html'
     return (kind, filename, anchor)
-
 
 def make_link_role(app, tagfile, base_url):
     def role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
@@ -146,11 +153,9 @@ def make_link_role(app, tagfile, base_url):
         return [pnode], []
     return role
 
-
 def setup_link_roles(app):
     for name, (base_url, tagfile) in app.config.doxylinks.iteritems():
         app.add_role(name, make_link_role(app, tagfile, base_url))
-
 
 def setup(app):
     app.add_config_value('doxylinks', {}, 'env')
