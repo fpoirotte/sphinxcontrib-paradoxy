@@ -91,7 +91,7 @@ def fetch_tagfile(app, tagfile):
         except Exception:
             raise
         finally:
-        f.close()
+            f.close()
     except Exception, err:
         app.warn('Doxygen tagfile %r not fetchable due to '
                  '%s: %s' % (tagfile, err.__class__, err))
