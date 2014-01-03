@@ -136,7 +136,11 @@ def make_link_role(app, tagfile, base_url):
     def role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
         text = utils.unescape(text)
         has_explicit_title, symbol, title = split_explicit_title(text)
-        kind, filename, anchor = lookup_url(app, tagfile, symbol)
+        try:
+            kind, filename, anchor = lookup_url(app, tagfile, symbol)
+        except KeyError, e:
+            inliner.reporter.warning(unicode(e.args[0]), line=lineno)
+            return [nodes.Text(title)], []
         full_url = base_url + filename
         if anchor:
             full_url += '#' + anchor
