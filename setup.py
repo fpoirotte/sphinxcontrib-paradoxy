@@ -44,7 +44,8 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Sphinx>=1.0.7'
+        'Sphinx>=1.0.7',
+        'lxml',
     ],
     use_2to3=True,
 )
