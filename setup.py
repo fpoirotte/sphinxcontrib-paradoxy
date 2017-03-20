@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
+import os
+import sys
+import importlib
 from setuptools import setup, find_packages
-from sphinxcontrib import paradoxy
+
+sys.path.insert(0, os.path.join(os.path.abspath('.'), 'sphinxcontrib'))
+paradoxy = importlib.import_module('paradoxy')
 
 long_desc = '''
 sphinxcontrib.paradoxy is an extension for Sphinx that makes it
