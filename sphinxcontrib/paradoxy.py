@@ -57,6 +57,7 @@ def configure_urllib2():
         pass
     urllib2.install_opener(urllib2.build_opener(*handlers))
 
+
 def load_mappings(app):
     """Load all tagfiles into the environment."""
     configure_urllib2()
@@ -80,6 +81,7 @@ def load_mappings(app):
         else:
             app.info('loading tagfile %s from cache...' % tagfile)
 
+
 def fetch_tagfile(app, tagfile):
     """Fetch and store a Doxygen tagfile in memory."""
     try:
@@ -98,6 +100,7 @@ def fetch_tagfile(app, tagfile):
                  '%s: %s' % (tagfile, err.__class__, err))
         return
 
+
 def lookup_url(app, tagfile, symbol):
     env = app.builder.env
     cache = env.paradoxy_cache
@@ -107,7 +110,7 @@ def lookup_url(app, tagfile, symbol):
             {'class': cls.strip('\\').replace('\\', '::')}
     try:
         if member:
-            query += "/member/name[text()='%(member)s']/.." % {'member': member}
+            query += "/member/name[text()='%s']/.." % member
             elem = doc.xpath(query)
             filename = elem[0].find('anchorfile').text
             anchor = elem[0].find('anchor').text
@@ -122,6 +125,7 @@ def lookup_url(app, tagfile, symbol):
     if not filename.endswith('.html'):
         filename += '.html'
     return (kind, filename, anchor)
+
 
 def make_link_role(app, tagfile, base_url):
     def role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
@@ -143,12 +147,13 @@ def make_link_role(app, tagfile, base_url):
         return [pnode], []
     return role
 
+
 def setup_link_roles(app):
     for name, (base_url, tagfile) in app.config.paradoxy.iteritems():
         app.add_role(name, make_link_role(app, tagfile, base_url))
+
 
 def setup(app):
     app.add_config_value('paradoxy', {}, 'env')
     app.connect('builder-inited', load_mappings)
     app.connect('builder-inited', setup_link_roles)
-

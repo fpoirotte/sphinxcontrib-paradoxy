@@ -10,4 +10,3 @@ paradoxy = {
         path.join(path.dirname(path.abspath('.')), 'doxygen', 'Example.xml')
     ),
 }
-
