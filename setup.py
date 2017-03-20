@@ -1,51 +1,47 @@
 # -*- coding: utf-8 -*-
-try:
-    from setuptools import setup, find_packages
-except ImportError:
-    import distribute_setup
-    distribute_setup.use_setuptools()
-    from setuptools import setup, find_packages
-
-import os
-import sys
+from setuptools import setup, find_packages
+from sphinxcontrib import paradoxy
 
 long_desc = '''
-sphinxcontrib.doxylinks is an extension for Sphinx that makes it
+sphinxcontrib.paradoxy is an extension for Sphinx that makes it
 very easy to add links to objects of a project documented with
 `Doxygen <http://www.doxygen.org>`_.
 '''
 
 setup(
-    name='sphinxcontrib-doxylinks',
-    version='0.2.0',
-    url='https://github.com/fpoirotte/sphinxcontrib-doxylinks',
-    download_url='https://github.com/fpoirotte/sphinxcontrib-doxylinks',
+    name='sphinxcontrib-paradoxy',
+    version=paradoxy.__version__,
+    url='https://github.com/fpoirotte/sphinxcontrib-paradoxy',
+    download_url='https://github.com/fpoirotte/sphinxcontrib-paradoxy',
     license='BSD',
     author='Francois Poirotte',
     author_email='clicky@erebot.net',
-    description='Easy linking to Doxygen objects from Sphinx',
+    description='Adds links to Doxygen objects within Sphinx',
     long_description=long_desc,
     zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Environment :: Console',
-        'Environment :: Web Environment',
+        'Environment :: Plugins',
+        'Framework :: Sphinx :: Extension',
         'Intended Audience :: Developers',
-        'Intended Audience :: Education',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
         'Topic :: Documentation',
-        'Topic :: Text Processing',
-        'Topic :: Utilities',
+        'Topic :: Documentation :: Sphinx',
+        'Topic :: Software Development :: Documentation',
     ],
+    keywords="sphinx doxygen links",
     platforms='any',
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'Sphinx>=1.0.7',
+        'Sphinx>=1.3.6',
+        'Sphinx<1.6',
         'lxml',
     ],
-    use_2to3=True,
+    test_suite='nose.collector',
+    namespace_packages=['sphinxcontrib'],
 )

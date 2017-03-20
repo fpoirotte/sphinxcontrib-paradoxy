@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<tagfile>
+  <compound kind="class">
+    <name>Example</name>
+    <filename>classExample.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>__construct</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>ac4a46586ffd54ae0a781c170d9697256</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>__destruct</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>ab20a0a555f484eca92d88bb749828f78</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>__clone</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a7b8951ed7ef937a806c1943d30cfc75a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>publicMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>aec5c2f8b3d042298c0a0c6a08cc023c7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static</type>
+      <name>publicStaticMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a6234a2bc0baa1c681f8ce4e58db78b2a</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>const</type>
+      <name>ANSWER</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a9fc0ea4f1c12d6e12923b743657237bc</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type></type>
+      <name>$publicMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>af552717471c97be94b67e9d483a0017f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static</type>
+      <name>$publicStaticMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a98e56baec0e8fcf5204a310e31effa96</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type></type>
+      <name>protectedMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a4e2689cf1c24cadb62063d6194a22c97</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="protected" static="yes">
+      <type>static</type>
+      <name>protectedStaticMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a91ce3eda0b34747325184fcacc89025e</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type></type>
+      <name>$protectedMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a71aa2c92676e4e7a3e9867cae7437ea9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected" static="yes">
+      <type>static</type>
+      <name>$protectedStaticMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a4d5c54a044645e87960ff6380d6e6567</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>privateMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a90e0aa486beb5a47088955ff6c6cc814</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static</type>
+      <name>privateStaticMethod</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a88636b6c522105f0e01ce29a1bdc4427</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type></type>
+      <name>$privateMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>a4ab607b3903f19a6c0b97f1e890e6b63</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private" static="yes">
+      <type>static</type>
+      <name>$privateStaticMember</name>
+      <anchorfile>classExample.html</anchorfile>
+      <anchor>adc3a64e47432f66c76990091ccb2f3a1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Namespaced::Example</name>
+    <filename>classNamespaced_1_1Example.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>__construct</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>aecaab757f91ff9847fe16cabfdd085d5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>__destruct</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a82bf36ad2696f1d7f5fa6b560af40289</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>__clone</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>ab61056e77977db6c8646bca2ad6bc467</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>publicMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a65cbacea56edfd8c59d1f9d10ff0a417</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static</type>
+      <name>publicStaticMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a429332321552bd8365fe90f507e11b61</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>const</type>
+      <name>ANSWER</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a0a757fc443fe1aaacd6e2fd46fb375c2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type></type>
+      <name>$publicMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a45da1246007ddd1f22a07246fa5d0a84</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>static</type>
+      <name>$publicStaticMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>ab6b20d4c3d3bd6a5cdc8a32be03d4772</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="protected">
+      <type></type>
+      <name>protectedMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>afae427369bbb2d3d010f67b0e1825d88</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="protected" static="yes">
+      <type>static</type>
+      <name>protectedStaticMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>ab7eb93e971b5c2980e4508b38ad78c81</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type></type>
+      <name>$protectedMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>aef4eab9dd528dca091a4ae1bcd7ca0a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected" static="yes">
+      <type>static</type>
+      <name>$protectedStaticMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a5ac3c43c5a0e10eee1b0995d57b6acf1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" protection="private">
+      <type></type>
+      <name>privateMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a3eb57c71bb7c39e4871cccafacdc9dbe</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" protection="private" static="yes">
+      <type>static</type>
+      <name>privateStaticMethod</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a2dca5e05764606d52e8b0e60259e80df</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type></type>
+      <name>$privateMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a31efdbedd4a8cb5eb80be0c3f42d274f</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private" static="yes">
+      <type>static</type>
+      <name>$privateStaticMember</name>
+      <anchorfile>classNamespaced_1_1Example.html</anchorfile>
+      <anchor>a92a878272590a5fdae39cbd59098e00e</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="namespace">
+    <name>Namespaced</name>
+    <filename>namespaceNamespaced.html</filename>
+    <class kind="class">Namespaced::Example</class>
+  </compound>
+</tagfile>

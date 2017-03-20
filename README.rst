@@ -1,4 +1,4 @@
-sphinxcontrib.doxylinks
+sphinxcontrib.paradoxy
 =======================
 
 `Sphinx`__ extension to save typing when linking to some information
@@ -14,7 +14,7 @@ Installation
 Installing this extension is done in just a few steps:
 
 -   Download the latest version of the code from GitHub:
-    https://github.com/fpoirotte/sphinxcontrib-doxylinks/archive/master.tar.gz
+    https://github.com/fpoirotte/sphinxcontrib-paradoxy/archive/master.tar.gz
 
 -   Extract the contents of the archive and go into the newly created directory.
 
@@ -41,9 +41,9 @@ this extension on Debian testing:
     -   python-setuptools
 
 -   Download the latest version of the code from GitHub:
-    https://github.com/fpoirotte/sphinxcontrib-doxylinks/archive/master.tar.gz
+    https://github.com/fpoirotte/sphinxcontrib-paradoxy/archive/master.tar.gz
 
--   Rename the tarball into: ``sphinxcontrib-doxylinks_<version>.orig.tar.gz``,
+-   Rename the tarball into: ``sphinxcontrib-paradoxy_<version>.orig.tar.gz``,
     where ``<version>`` matches the version string defined in `setup.py`__.
 
 -   Extract the tarball and go to the newly created directory.
@@ -51,13 +51,13 @@ this extension on Debian testing:
 -   Build the package by running ``dpkg-buildpackage``.
 
 -   Install the newly created package with
-    ``sudo dpkg -i ../python-sphinxcontrib.doxylinks_*_all.deb``
+    ``sudo dpkg -i ../python-sphinxcontrib.paradoxy_*_all.deb``
 
 Other .deb-based distributions and older Debian releases may require some
 tweaking in the `packaging directory`__ for a package to be built correctly.
 
-.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/setup.py
-.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/debian/
+.. __: https://github.com/fpoirotte/sphinxcontrib-paradoxy/blob/master/setup.py
+.. __: https://github.com/fpoirotte/sphinxcontrib-paradoxy/blob/master/debian/
 
 
 Prerequisites
@@ -83,16 +83,16 @@ How to use
 First, load the extension in your ``conf.py``::
 
     extensions = [
-        'sphinxcontrib.doxylinks',
+        'sphinxcontrib.paradoxy',
         # other extensions...
     ]
 
 This extension adds two new config values.
-The first one is called ``doxylinks`` and is created like this::
+The first one is called ``paradoxy`` and is created like this::
 
-    doxylinks = {'exmpl': ('http://example.com/', '/path/to/tagfile'), ...}
+    paradoxy = {'exmpl': ('http://example.com/', '/path/to/tagfile'), ...}
 
-The second one is called ``doxylinks_cache_limit`` and indicates
+The second one is called ``paradoxy_cache_limit`` and indicates
 the number of days a remote tagfile will be kept in cache before
 being considered invalid (which will cause it to be fetched again
 the next time ``sphinx-build`` is run).
@@ -134,14 +134,14 @@ Contributing
 -   Patch as necessary
 -   Send a pull request
 
-.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/fork_select
+.. __: https://github.com/fpoirotte/sphinxcontrib-paradoxy/fork_select
 
 
 Bug reports
 -----------
 
 Bugs should be reported through the project's issue tracker on GitHub:
-https://github.com/fpoirotte/sphinxcontrib-doxylinks/issues.
+https://github.com/fpoirotte/sphinxcontrib-paradoxy/issues.
 
 
 License and credits
@@ -155,5 +155,5 @@ See the `LICENSE`__ file for more information.
 This extension is heavily based on the extlinks and intersphinx extensions
 developped by the Sphinx community.
 
-.. __: https://github.com/fpoirotte/sphinxcontrib-doxylinks/blob/master/LICENSE
+.. __: https://github.com/fpoirotte/sphinxcontrib-paradoxy/blob/master/LICENSE
 

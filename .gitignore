@@ -1,6 +1,9 @@
+.*.swp
 /dist/
 /build/
-/debian/tmp/
 *.egg-info/
 *.pyc
 *.pyo
+/.tox/
+/.coverage
+/cover/

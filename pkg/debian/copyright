@@ -1,6 +1,6 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: sphinxcontrib-doxylinks
-Source: https://github.com/fpoirotte/sphinxcontrib-doxylinks
+Upstream-Name: sphinxcontrib-paradoxy
+Source: https://github.com/fpoirotte/sphinxcontrib-paradoxy
 
 Files: *
 Copyright: 2013, Francois Poirotte <clicky@erebot.net>

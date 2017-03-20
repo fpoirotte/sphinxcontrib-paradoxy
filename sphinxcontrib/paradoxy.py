@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-    doxylinks
-    ~~~~~~~~~
+    paradoxy
+    ~~~~~~~~
 
     Extension to save typing when linking to some information contained in
     a Doxygen documentation.
 
     This adds two new config values.
-    The first one is called ``doxylinks`` and is created like this::
+    The first one is called ``paradoxy`` and is created like this::
 
-       doxylinks = {'exmpl': ('http://example.com/', '/path/to/tagfile'), ...}
+       paradoxy = {'exmpl': ('http://example.com/', '/path/to/tagfile'), ...}
 
-    The second one is called ``doxylinks_cache_limit`` and indicates
+    The second one is called ``paradoxy_cache_limit`` and indicates
     the number of days for which a remote tagfile will be kept in cache
     before being considered invalid (and fetched again).
     The default value is 1, meaning that remote tagfiles will only be
@@ -33,7 +33,7 @@
 
     This extension is heavily based on the extlinks and intersphinx extensions.
 
-    :copyright: Copyright 2013 by Francois Poirotte.
+    :copyright: Copyright 2013-2017 by Francois Poirotte.
     :license: BSD, see LICENSE for details.
 """
 import lxml.etree as ET
@@ -44,6 +44,8 @@ from docutils import nodes, utils
 from sphinx.util.nodes import split_explicit_title
 
 __all__ = ['setup']
+
+__version__ = '0.3.0'
 
 
 def configure_urllib2():
@@ -59,12 +61,12 @@ def load_mappings(app):
     """Load all tagfiles into the environment."""
     configure_urllib2()
     now = int(time.time())
-    cache_time = now - getattr(app.config, 'doxylinks_cache_limit', 1) * 86400
+    cache_time = now - getattr(app.config, 'paradoxy_cache_limit', 1) * 86400
     env = app.builder.env
-    if not hasattr(env, 'doxylinks_cache'):
-        env.doxylinks_cache = {}
-    cache = env.doxylinks_cache
-    for (_dummy, tagfile) in app.config.doxylinks.itervalues():
+    if not hasattr(env, 'paradoxy_cache'):
+        env.paradoxy_cache = {}
+    cache = env.paradoxy_cache
+    for (_dummy, tagfile) in app.config.paradoxy.itervalues():
         # decide whether the tagfile must be read: always read local
         # files; remote ones only if the cache time is expired
         if '://' not in tagfile or tagfile not in cache \
@@ -98,34 +100,23 @@ def fetch_tagfile(app, tagfile):
 
 def lookup_url(app, tagfile, symbol):
     env = app.builder.env
-    cache = env.doxylinks_cache
+    cache = env.paradoxy_cache
     doc = ET.fromstring(cache[tagfile][0])
     cls, _sep, member = symbol.partition('::')
-    query = (
-        "/tagfile/"
-        "compound[@kind='interface' or @kind='class' or @kind='page']"
-        "/name[text()='%(class)s']"
-        "/.."
-    ) % {'class': cls}
+    query = "/tagfile/compound/name[text()='%(class)s']/.." % \
+            {'class': cls.strip('\\').replace('\\', '::')}
     try:
         if member:
-            query += (
-                "/member[@kind='function' or @kind='variable']"
-                "/name[text()='%(member)s']"
-                "/.."
-            ) % {'class': cls, 'member': member}
-            res = doc.xpath(query + "/anchorfile/text()")
-            filename = str(res[0].text)
-            res = doc.xpathEval(query + "/anchor/text()")
-            anchor = str(res[0].text)
-            res = doc.xpathEval(query + "/@kind")
-            kind = str(res[0].text)
+            query += "/member/name[text()='%(member)s']/.." % {'member': member}
+            elem = doc.xpath(query)
+            filename = elem[0].find('anchorfile').text
+            anchor = elem[0].find('anchor').text
+            kind = elem[0].get("kind")
         else:
-            res = doc.xpath(query + "/filename/text()")
-            filename = str(res[0].text)
+            elem = doc.xpath(query)
+            filename = elem[0].find('filename').text
             anchor = None
-            res = doc.xpath(query + "/@kind")
-            kind = str(res[0].text)
+            kind = elem[0].get("kind")
     except IndexError:
         raise KeyError('No documentation found for "%s"' % symbol)
     if not filename.endswith('.html'):
@@ -135,7 +126,7 @@ def lookup_url(app, tagfile, symbol):
 def make_link_role(app, tagfile, base_url):
     def role(typ, rawtext, text, lineno, inliner, options={}, content=[]):
         text = utils.unescape(text)
-        has_explicit_title, symbol, title = split_explicit_title(text)
+        has_explicit_title, title, symbol = split_explicit_title(text)
         try:
             kind, filename, anchor = lookup_url(app, tagfile, symbol)
         except KeyError, e:
@@ -153,11 +144,11 @@ def make_link_role(app, tagfile, base_url):
     return role
 
 def setup_link_roles(app):
-    for name, (base_url, tagfile) in app.config.doxylinks.iteritems():
+    for name, (base_url, tagfile) in app.config.paradoxy.iteritems():
         app.add_role(name, make_link_role(app, tagfile, base_url))
 
 def setup(app):
-    app.add_config_value('doxylinks', {}, 'env')
+    app.add_config_value('paradoxy', {}, 'env')
     app.connect('builder-inited', load_mappings)
     app.connect('builder-inited', setup_link_roles)
 
