@@ -95,7 +95,7 @@ def fetch_tagfile(app, tagfile):
             raise
         finally:
             f.close()
-    except Exception, err:
+    except Exception as err:
         app.warn('Doxygen tagfile %r not fetchable due to '
                  '%s: %s' % (tagfile, err.__class__, err))
         return
@@ -133,7 +133,7 @@ def make_link_role(app, tagfile, base_url):
         has_explicit_title, title, symbol = split_explicit_title(text)
         try:
             kind, filename, anchor = lookup_url(app, tagfile, symbol)
-        except KeyError, e:
+        except KeyError as e:
             inliner.reporter.warning(unicode(e.args[0]), line=lineno)
             return [nodes.Text(title)], []
         full_url = base_url + filename
