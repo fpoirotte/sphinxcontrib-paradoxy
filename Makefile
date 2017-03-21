@@ -1,5 +1,5 @@
 PYTHON ?= python
-NAME := $(shell"$(PYTHON)" setup.py --name)
+NAME := $(shell "$(PYTHON)" setup.py --name)
 VERSION := $(shell "$(PYTHON)" setup.py --version)
 
 all: install
