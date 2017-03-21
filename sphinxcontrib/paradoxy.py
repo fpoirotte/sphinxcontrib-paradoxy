@@ -39,9 +39,12 @@
 import lxml.etree as ET
 import os
 import time
-import urllib2
 from docutils import nodes, utils
 from sphinx.util.nodes import split_explicit_title
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
 
 __all__ = ['setup']
 
@@ -67,7 +70,7 @@ def load_mappings(app):
     if not hasattr(env, 'paradoxy_cache'):
         env.paradoxy_cache = {}
     cache = env.paradoxy_cache
-    for (_dummy, tagfile) in app.config.paradoxy.itervalues():
+    for (_dummy, tagfile) in app.config.paradoxy.values():
         # decide whether the tagfile must be read: always read local
         # files; remote ones only if the cache time is expired
         if '://' not in tagfile or tagfile not in cache \
@@ -149,7 +152,7 @@ def make_link_role(app, tagfile, base_url):
 
 
 def setup_link_roles(app):
-    for name, (base_url, tagfile) in app.config.paradoxy.iteritems():
+    for name, (base_url, tagfile) in app.config.paradoxy.items():
         app.add_role(name, make_link_role(app, tagfile, base_url))
 
 
