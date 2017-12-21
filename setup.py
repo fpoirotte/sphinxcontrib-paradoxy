@@ -40,7 +40,7 @@ setup(
     ],
     keywords="sphinx doxygen links",
     platforms='any',
-    packages=find_packages(),
+    packages=find_packages(exclude=['test']),
     include_package_data=True,
     install_requires=[
         'Sphinx>=1.3.6',
