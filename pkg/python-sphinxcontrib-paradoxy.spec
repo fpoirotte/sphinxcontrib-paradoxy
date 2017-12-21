@@ -121,6 +121,9 @@ popd
 %endif
 
 %changelog
+* Thu Dec 22 2017 François Poirotte <clicky@erebot.net>
+- Improve compatibility with other OSes
+
 * Mon Mar 20 2017 François Poirotte <clicky@erebot.net>
 - Initial packaging
 
