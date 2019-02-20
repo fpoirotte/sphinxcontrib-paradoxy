@@ -41,10 +41,12 @@ import os
 import time
 from docutils import nodes, utils
 from sphinx.util.nodes import split_explicit_title
+from sphinx.util import logging
 try:
     import urllib2
 except ImportError:
     import urllib.request as urllib2
+logger = logging.getLogger(__name__)
 
 __all__ = ['setup']
 
@@ -75,14 +77,14 @@ def load_mappings(app):
         # files; remote ones only if the cache time is expired
         if '://' not in tagfile or tagfile not in cache \
                or cache[tagfile][1] < cache_time:
-            app.info('loading tagfile from %s...' % tagfile)
+            logger.info('loading tagfile from %s...' % tagfile)
             data = fetch_tagfile(app, tagfile)
             if data:
                 cache[tagfile] = (data, now)
             else:
                 cache.pop(tagfile, None)
         else:
-            app.info('loading tagfile %s from cache...' % tagfile)
+            logger.info('loading tagfile %s from cache...' % tagfile)
 
 
 def fetch_tagfile(app, tagfile):
@@ -99,7 +101,7 @@ def fetch_tagfile(app, tagfile):
         finally:
             f.close()
     except Exception as err:
-        app.warn('Doxygen tagfile %r not fetchable due to '
+        logger.warn('Doxygen tagfile %r not fetchable due to '
                  '%s: %s' % (tagfile, err.__class__, err))
         return
 
